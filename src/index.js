@@ -1,6 +1,6 @@
 import { log } from './main';
 
-const user = { id: 1, name: 'luca' };
+const user = { id: 1, name: 'luca', role: 'admin', surname: 'biondi' };
 const details = { surname: 'pascucci', age: 27 };
 
 const name = "Luca";
@@ -60,3 +60,21 @@ cloned2.coords = { ...marker.coords, lat: 1000 };
 
 log(marker);
 log(cloned2);
+
+/**
+ * DESTRUCTURING oggetti semplici
+ * - crea due variabili collegate all'oggetto (user)
+ * - il nome della variabile deve essere uguale alla chiave dell'oggetto (name, surname, role ....)
+ * - è possibile valorizzare una variabile durante alla sua definizione (VEDI surname = 'pascucci')
+ *      - chiave (surname) presente nell'oggetto --> viene utilizzato il suo valore
+ *      - chiave (surname) non presente nell'oggetto --> viene utilizzato il nuovo valore
+ * - è possibile rinominare la variabile (role:r)
+ */
+const { name, surname = 'pascucci', role: r } = user;
+
+console.log(name, surname, r);
+
+// DESTRUCTURING oggetti innestati
+const { coords: { lat, lng: longitude, zoom = 5 } } = marker;
+
+console.log(lat, longitude, zoom);
